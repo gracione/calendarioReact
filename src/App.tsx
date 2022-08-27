@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Calendario from './components/card/Calendario';
 import './global.ts';
 import { Container } from './styles';
 import { GlobalStyle } from "./global";
+import Horarios from './components/card/Horarios';
 
 function CriarArrayCalendario(ano = 0, mes = 0) {
   let data = new Date();
@@ -54,14 +55,17 @@ function CriarArrayCalendario(ano = 0, mes = 0) {
 
 function App() {
   const [count, setCount] = useState(0);
+  const [data, setData] = useState(1);
 
   return (
     <Container>
       <button onClick={() => setCount(count - 1)}> {"<<"} </button>
       <button onClick={() => setCount(count + 1)}> {">>"} </button>
       <Calendario
-        dias={CriarArrayCalendario(0, count)}
+        dias={CriarArrayCalendario(0, count) }
+        setData={setData}
       />
+      <Horarios data={data} ></Horarios>
       <GlobalStyle />
     </Container>
   );
