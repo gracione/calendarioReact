@@ -1,61 +1,75 @@
 import React from 'react';
-import Card from './components/card/Card';
+import Calendario from './components/card/Calendario';
 import './global.ts';
 import { Container } from './styles';
 import { GlobalStyle } from "./global";
 
+let mes=0;
 
-function App() {
+function CriarArrayCalendario(ano = 0, mes = 0) {
   let data = new Date();
-  let mesAtual = data.getMonth() + 1;
+  let mesAtual = data.getMonth() + 1 + mes;
   let diaAtual = data.getDay();
-  let anoAtual = data.getFullYear();
-
+  let anoAtual = data.getFullYear() + ano;
   let diasDoMes = new Date(anoAtual, mesAtual, 0).getDate();
+  let dadosCalendario: any = []
 
-  let dadosCard : any= {
-    domingo: ['Domingo']
-    , segunda: ['Segunda']
-    , terca: ['Terca']
-    , quarta: ['Quarta']
-    , quinta: ['Quinta']
-    , sexta: ['Sexta']
-    , sabado: ['Sabado']
-  };
+  dadosCalendario[0] = [];
+  dadosCalendario[1] = [];
+  dadosCalendario[2] = [];
+  dadosCalendario[3] = [];
+  dadosCalendario[4] = [];
+  dadosCalendario[5] = [];
+  dadosCalendario[6] = [];
 
   for (let i = 1; i <= diasDoMes; i++) {
     if (0 == new Date(anoAtual, mesAtual - 1, i).getDay()) {
-      console.log(new Date(anoAtual, mesAtual - 1, i).getDay()+"-----"+i+"------");
-      dadosCard.domingo.push(i);
+      dadosCalendario[0].push(i);
     }
     if (1 == new Date(anoAtual, mesAtual - 1, i).getDay()) {
-      dadosCard.segunda.push(i);
+      dadosCalendario[1].push(i);
     }
     if (2 == new Date(anoAtual, mesAtual - 1, i).getDay()) {
-      dadosCard.terca.push(i);
+      dadosCalendario[2].push(i);
     }
     if (3 == new Date(anoAtual, mesAtual - 1, i).getDay()) {
-      dadosCard.quarta.push(i);
+      dadosCalendario[3].push(i);
     }
     if (4 == new Date(anoAtual, mesAtual - 1, i).getDay()) {
-      dadosCard.quinta.push(i);
+      dadosCalendario[4].push(i);
     }
     if (5 == new Date(anoAtual, mesAtual - 1, i).getDay()) {
-      dadosCard.sexta.push(i);
+      dadosCalendario[5].push(i);
     }
     if (6 == new Date(anoAtual, mesAtual - 1, i).getDay()) {
-      dadosCard.sabado.push(i);
+      dadosCalendario[6].push(i);
     }
   }
-
-let card = <Card
-  dias={dadosCard}
-></Card>;
-return (
-  <Container>
-    {card}
-    <GlobalStyle />
-  </Container>
-);
+  for (let i = 0; i <= 7; i++) {
+    let xs = new Date(anoAtual, mesAtual - 1, 0).getDay();
+    if (i <= xs) {
+      dadosCalendario[i].unshift('x');
+    }
+  }
+  return dadosCalendario;
+}
+function voltarMes(){
+  mes-=1;
+}
+function proximoMes(){
+  mes+=1;
+}
+function App() {
+  console.log(mes);
+  return (
+    <Container>
+      <button onClick={voltarMes}> {"<<"} </button>
+      <button onClick={proximoMes}> {">>"} </button>
+      <Calendario
+        dias={CriarArrayCalendario(0,mes)}
+      />
+      <GlobalStyle />
+    </Container>
+  );
 }
 export default App;

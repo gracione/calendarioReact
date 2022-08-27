@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendario } from "./style";
+import { Calendari } from "./style";
 
 
 function OrganizarSemana(diaSemana: any) {
@@ -10,21 +10,21 @@ function OrganizarSemana(diaSemana: any) {
   return domingo;
 }
 
-function Card(dias: any) {
+function Calendario(dias: any) {
   let domingo, segunda, terca, quarta, quinta, sexta, sabado: any;
-  domingo = OrganizarSemana(dias.dias.domingo);
-  segunda = OrganizarSemana(dias.dias.segunda);
-  terca = OrganizarSemana(dias.dias.terca);
-  quarta = OrganizarSemana(dias.dias.quarta);
-  quinta = OrganizarSemana(dias.dias.quinta);
-  sexta = OrganizarSemana(dias.dias.sexta);
-  sabado = OrganizarSemana(dias.dias.sabado);
+  domingo = OrganizarSemana(dias.dias[0]);
+  segunda = OrganizarSemana(dias.dias[1]);
+  terca = OrganizarSemana(dias.dias[2]);
+  quarta = OrganizarSemana(dias.dias[3]);
+  quinta = OrganizarSemana(dias.dias[4]);
+  sexta = OrganizarSemana(dias.dias[5]);
+  sabado = OrganizarSemana(dias.dias[6]);
 
 
 
   return (
     <>
-      <Calendario>
+      <Calendari>
         <ul>
           {domingo}
         </ul>
@@ -46,11 +46,11 @@ function Card(dias: any) {
         <ul>
           {sabado}
         </ul>
-      </Calendario>
+      </Calendari>
     </>
   );
 
 
 }
 
-export default Card;
+export default Calendario;

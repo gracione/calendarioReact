@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const Calendario = styled.div`
+export const Calendari = styled.div`
     width:600px;
     height:350px;
     background:white;
@@ -8,14 +8,13 @@ export const Calendario = styled.div`
     justify-content: space-between ;
 
     ul{
+        width: 15%;
         display: flex ;
         flex-direction: column ;
-        justify-content: space-between ;
         
         li{
-            border: solid ;
-            width: 70px;
-            height: 50px;
+            border: solid 1px;
+            height: 20%;
             list-style-type: none;
 
             display: flex ;
