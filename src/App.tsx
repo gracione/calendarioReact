@@ -6,40 +6,22 @@ import { GlobalStyle } from "./global";
 
 
 function App() {
-  let dadosCard = [
-    {
-      "cliente": "carlos",
-      "funcionario": "pedro",
-      "tratamento": "hidra",
-      "telefone": "999998",
-      "horario" : "08:30",
-      "data" : "3 de janeiro 2021"
-    },
-    {
-      "cliente": "jose",
-      "funcionario": "araujo",
-      "tratamento": "hidra",
-      "telefone": "555998",
-      "horario" : "09:30",
-      "data" : "3 de janeiro 2021"
-    },
-  ];
+  let dadosCard = {
+    domingo : [1,2,3,4,5]
+    ,segunda : [1,2,3,4,5]
+    ,terca : [1,2,3,4,5]
+    ,quarta : [1,2,3,4,5]
+    ,quinta : [1,2,3,4,5]
+    ,sexta : [1,2,3,4,5]
+    ,sabado : [1,2,3,4,5]
+  };
 
-  let card = [];
-  for (let index = 0; index < dadosCard.length; index++) {
-    card[index] = <Card
-      cliente={dadosCard[index].cliente}
-      funcionario={dadosCard[index].funcionario}
-      tratamento={dadosCard[index].tratamento}
-      telefone={dadosCard[index].telefone}
-      horario={dadosCard[index].horario}
-      data={dadosCard[index].data}
-    />;
-  }
-
+  let card = <Card
+    dias={dadosCard}
+  ></Card>;
   return (
     <Container>
-      {card}
+       {card}
       <GlobalStyle />
     </Container>
   );

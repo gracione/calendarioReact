@@ -1,51 +1,41 @@
-import { Cartao } from "./style";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import React from "react";
+import { Calendario } from "./style";
 
-interface tipoDeDados {
-  cliente: string;
-  funcionario: string;
-  tratamento: string;
-  telefone: string;
-  horario: string;
-  data: string;
+
+function OrganizarSemana(diaSemana: any) {
+  let domingo: any = [];
+  diaSemana.forEach((element: string) => {
+    domingo.push(<li>{element}</li>);
+  });
+  console.log(domingo);
+  return domingo;
 }
 
-function Card({ cliente, funcionario, tratamento, telefone, horario, data }: tipoDeDados) {
-  let linkTelefone = "https://api.whatsapp.com/send/?phone=+55" + telefone + "&text=oi";
+function Card(dias: any) {
+  let domingo,segunda,terca,quarta,quinta,sexta,sabado: any;
+  domingo = OrganizarSemana(dias.dias.domingo);
+  segunda = OrganizarSemana(dias.dias.segunda);
+  terca = OrganizarSemana(dias.dias.terca);
+  quarta = OrganizarSemana(dias.dias.quarta);
+  quinta = OrganizarSemana(dias.dias.quinta);
+  sexta = OrganizarSemana(dias.dias.sexta);
+  sabado = OrganizarSemana(dias.dias.sabado);
+
+
+  
   return (
     <>
-      <Cartao>
-        <div className='dados-horario'>
-          <div className="horario" >
-            {horario}
-          </div>
-          <div className="data" >
-            {data}
-          </div>
-        </div>
-        <div className='dados-usuario' >
-          <ul>
-            <li className="cliente" >
-              cliente: {cliente}
-              <span><img src="../../icons/lapis.png"></img></span>
-            </li>
-            <li>funcionario: {funcionario}</li>
-            <li>tratamento: {tratamento}</li>
-            <li>
-              <a href={linkTelefone}>
-                telefone: {telefone}
-                <FontAwesomeIcon icon={faWhatsapp} />
-              </a>
-            </li>
-
-          </ul>
-          <div className='confirmar-desmarcar' >
-            <div className='confirmar'>CONFIRMAR</div>
-            <div className='desmarcar'>DESMARCAR</div>
-          </div>
-        </div>
-      </Cartao>
+      <Calendario>
+        <ul>
+        {domingo}
+        {segunda}
+        {terca}
+        {quarta}
+        {quinta}
+        {sexta}
+        {sabado}
+        </ul>
+      </Calendario>
     </>
   );
 
