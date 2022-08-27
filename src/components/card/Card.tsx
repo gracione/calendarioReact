@@ -7,12 +7,11 @@ function OrganizarSemana(diaSemana: any) {
   diaSemana.forEach((element: string) => {
     domingo.push(<li>{element}</li>);
   });
-  console.log(domingo);
   return domingo;
 }
 
 function Card(dias: any) {
-  let domingo,segunda,terca,quarta,quinta,sexta,sabado: any;
+  let domingo, segunda, terca, quarta, quinta, sexta, sabado: any;
   domingo = OrganizarSemana(dias.dias.domingo);
   segunda = OrganizarSemana(dias.dias.segunda);
   terca = OrganizarSemana(dias.dias.terca);
@@ -22,18 +21,30 @@ function Card(dias: any) {
   sabado = OrganizarSemana(dias.dias.sabado);
 
 
-  
+
   return (
     <>
       <Calendario>
         <ul>
-        {domingo}
-        {segunda}
-        {terca}
-        {quarta}
-        {quinta}
-        {sexta}
-        {sabado}
+          {domingo}
+        </ul>
+        <ul>
+          {segunda}
+        </ul>
+        <ul>
+          {terca}
+        </ul>
+        <ul>
+          {quarta}
+        </ul>
+        <ul>
+          {quinta}
+        </ul>
+        <ul>
+          {sexta}
+        </ul>
+        <ul>
+          {sabado}
         </ul>
       </Calendario>
     </>
