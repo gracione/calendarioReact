@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendario from './components/card/Calendario';
 import './global.ts';
 import { Container } from './styles';
 import { GlobalStyle } from "./global";
-
-let mes=0;
 
 function CriarArrayCalendario(ano = 0, mes = 0) {
   let data = new Date();
@@ -53,20 +51,16 @@ function CriarArrayCalendario(ano = 0, mes = 0) {
   }
   return dadosCalendario;
 }
-function voltarMes(){
-  mes-=1;
-}
-function proximoMes(){
-  mes+=1;
-}
+
 function App() {
-  console.log(mes);
+  const [count, setCount] = useState(0);
+
   return (
     <Container>
-      <button onClick={voltarMes}> {"<<"} </button>
-      <button onClick={proximoMes}> {">>"} </button>
+      <button onClick={() => setCount(count - 1)}> {"<<"} </button>
+      <button onClick={() => setCount(count + 1)}> {">>"} </button>
       <Calendario
-        dias={CriarArrayCalendario(0,mes)}
+        dias={CriarArrayCalendario(0, count)}
       />
       <GlobalStyle />
     </Container>

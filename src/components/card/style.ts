@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const Calendari = styled.div`
     width:600px;
-    height:350px;
     background:white;
     display: flex ;
     justify-content: space-between ;
@@ -14,7 +13,7 @@ export const Calendari = styled.div`
         
         li{
             border: solid 1px;
-            height: 20%;
+            height: 60px;
             list-style-type: none;
 
             display: flex ;
