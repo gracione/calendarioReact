@@ -1,14 +1,15 @@
+import { HorariosCard } from "./style";
 
 export default function Horarios(props : any) {
   return (
-    <>
-    <h3>{props.data}</h3>
-    <h3>{props.data}</h3>
-    <h3>{props.data}</h3>
-    <h3>{props.data}</h3>
-    <h3>{props.data}</h3>
-    <h3>{props.data}</h3>
-    <h3>{props.data}</h3>
-    </>
+    <HorariosCard>
+    <div className="horario-disponivel">{props.data}</div>
+    <div className="horario-disponivel">{props.data}</div>
+    <div className="horario-disponivel">{props.data}</div>
+    <div className="horario-disponivel">{props.data}</div>
+    <div className="horario-disponivel">{props.data}</div>
+    <div className="horario-disponivel">{props.data}</div>
+    <div className="horario-disponivel">{props.data}</div>
+    </HorariosCard>
   );
 }

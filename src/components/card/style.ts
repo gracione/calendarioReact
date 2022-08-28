@@ -22,3 +22,15 @@ export const Calendari = styled.div`
         }
     }
     `;
+export const HorariosCard = styled.div`
+    width: 600px;
+    border: solid ;
+    border-style: inset;
+    display: flex;
+    justify-content: space-between ;
+    .horario-disponivel{
+        display: block ;
+        width: 200px;
+        border: solid ;
+    }
+`;
