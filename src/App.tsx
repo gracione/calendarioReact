@@ -5,11 +5,9 @@ import { Container } from './styles';
 import { GlobalStyle } from "./global";
 import Horarios from './components/card/Horarios';
 
-function CriarArrayCalendario(ano = 0, mes = 0) {
-  let data = new Date();
-  let mesAtual = data.getMonth() + 1 + mes;
-  let diaAtual = data.getDay();
-  let anoAtual = data.getFullYear() + ano;
+function criarArrayCalendario(ano = 0, mes = 0) {
+  let mesAtual = mes + 1;
+  let anoAtual = ano;
   let diasDoMes = new Date(anoAtual, mesAtual, 0).getDate();
   let dadosCalendario: any = []
 
@@ -53,20 +51,42 @@ function CriarArrayCalendario(ano = 0, mes = 0) {
   return dadosCalendario;
 }
 
+function nomeMes(mesNumero: any) {
+  let meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  return meses[mesNumero];
+}
+
 function App() {
-  const [count, setCount] = useState(0);
-  const [data, setData] = useState(1);
+  let mesAtual = new Date().getMonth();
+  let anoAtual = new Date().getFullYear();
+  const [ano, setAno] = useState(anoAtual);
+  const [mes, setmes] = useState(mesAtual);
+  const [dia, setDia] = useState(1);
+  let data = dia+"/"+mes+"/"+ano; 
+  if (mes > 11) {
+    setmes(0);
+    setAno(ano + 1);
+  }
+  if (mes < 0) {
+    setmes(11);
+    setAno(ano - 1);
+  }
 
   return (
     <Container>
-      <button onClick={() => setCount(count - 1)}> {"<<"} </button>
-      <button onClick={() => setCount(count + 1)}> {">>"} </button>
-      <Calendario
-        dias={CriarArrayCalendario(0, count) }
-        setData={setData}
-      />
+      <div className='calendario'>
+        <div className='painel-calendario' >
+          <button onClick={() => setmes(mes - 1)}> {"<<"} </button>
+          <div className='mesAno' >{ano + " " + nomeMes(mes)}</div>
+          <button onClick={() => setmes(mes + 1)}> {">>"} </button>
+        </div>
+        <Calendario
+          dias={criarArrayCalendario(ano, mes)}
+          setDia={setDia}
+        />
+        <GlobalStyle />
+      </div>
       <Horarios data={data} ></Horarios>
-      <GlobalStyle />
     </Container>
   );
 }
