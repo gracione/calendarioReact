@@ -7,6 +7,7 @@ function OrganizarSemana(diaSemana: any, setData: any) {
   diaSemana.forEach((element: string) => {
     domingo.push(<li onClick={() => setData(element)}>{element}</li>);
   });
+  
   return domingo;
 }
 
