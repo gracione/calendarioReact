@@ -1,15 +1,25 @@
 import { HorariosCard } from "./style";
+import React, { useState, useEffect } from 'react';
+import api from './../../services/api';
 
 export default function Horarios(props: any) {
-  //aqui futuramente sera pegado esses dados da api
-  let horariosDisponivel = [];
+  const [token] = useState(localStorage.getItem('token'));
+  const [teste, setTest] = useState();
+  
+  let horariosDisponivel: any[] = [];
   let listaHorarios: any = [];
-  horariosDisponivel[1] = '08:00'
-  horariosDisponivel[2] = '09:00'
-  horariosDisponivel[3] = '10:00'
-  horariosDisponivel[4] = '12:00'
-  horariosDisponivel[5] = '13:00'
+  api
+    .post("/horarios-marcados", token)
+    .then((response) => {
+      setTest(response.data);
+//      horariosDisponivel.push(response.data[0].horario_inicio);
+    }
+    );
+    
+  /////////////////
 
+  console.log(teste);
+    
   horariosDisponivel.forEach(element => {
     listaHorarios.push(
       <div className="horario-disponivel" >
