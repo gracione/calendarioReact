@@ -7,28 +7,10 @@ export default function Horarios(props: any) {
   
   let horariosDisponivel: string[] = [];
   let listaHorarios: any = [];
-  api
-    .post("/horarios-marcados", token)
-    .then((response) => {
-      response.data.forEach((element: any) => {
-        horariosDisponivel[0] = element.horario_inicio;
-      });
-    });
-
-    const [transactions, setTransactions] = useState([]);
 
 
-    async function createTransaction() {
-      let vetor: any = [];
-      const response = await api.post("/horarios-marcados", {
-      });
-      response.data.forEach((element: { horario_inicio: any; }) => {
-        vetor.push(element.horario_inicio);
-      });
-      setTransactions(vetor);
-    }
-    createTransaction();
-    console.log(transactions);
+    const response = api.post("/horarios-marcados", {});
+    console.log(response);
 //  horariosDisponivel.forEach((element: any) => {
 //    console.log(element);
 //  });
