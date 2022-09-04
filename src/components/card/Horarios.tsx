@@ -4,26 +4,39 @@ import api from './../../services/api';
 
 export default function Horarios(props: any) {
   const [token] = useState(localStorage.getItem('token'));
-  const [transactions, setTransactions] = useState<[]>([]);
+  const [user, setUser] = useState([]);
+  const array: any[]= props.data.split("/");
+  const [dia, setDia] = useState(22);
+//  setDia(array[0]);
+  useEffect(() => {
+    api
+    .post("/horarios-marcados",{
+      dia:array[0],
+      mes:"8",
+      ano:"2022"
+    })
+    .then((response) => setUser(response.data))
+    .catch((err) => {
+      console.error("ops! ocorreu um erro" + err);
+    });
+  }, [array[0]]);
+  
+  //console.log(user);
+  let horariosDisponivel:any = [];
 
-  let horariosDisponivel: string[] = [];
+  user.forEach((element: any) => {
+    horariosDisponivel.push(
+      <HorariosCard>{element.horario_inicio}</HorariosCard>
+    )
+  });
+
   let listaHorarios: any = [];
-
-
-    async function createTransaction() {
-      const response = await api.post("/horarios-marcados", {});
-        setTransactions(response.data[0].horario_inicio);
-        return response.data[0].horario_inicio;
-    }
-    
-    createTransaction();
-    console.log(transactions);
 
 return (
   <HorariosCard >
       {props.data}
       {listaHorarios}
-      {transactions}
+      {horariosDisponivel}
     </HorariosCard>
   );
 }
