@@ -56,13 +56,13 @@ function nomeMes(mesNumero: any) {
   return meses[mesNumero];
 }
 
-function App() {
+function EtapaCalendario() {
   let mesAtual = new Date().getMonth();
   let anoAtual = new Date().getFullYear();
   const [ano, setAno] = useState(anoAtual);
   const [mes, setmes] = useState(mesAtual);
   const [dia, setDia] = useState(1);
-  let data = dia+"/"+mes+"/"+ano; 
+  let data = dia + "/" + mes + "/" + ano;
   if (mes > 11) {
     setmes(0);
     setAno(ano + 1);
@@ -76,9 +76,9 @@ function App() {
     <Container>
       <div className='calendario'>
         <div className='painel-calendario' >
-          <button onClick={() => setmes(mes - 1)}> {"<<"} </button>
-          <div className='mesAno' >{ano + " " + nomeMes(mes)}</div>
-          <button onClick={() => setmes(mes + 1)}> {">>"} </button>
+          <div className='mudar-mes' onClick={() => setmes(mes - 1)}> {"<"} </div>
+          <b>{nomeMes(mes) + " " + ano}</b>
+          <div className='mudar-mes' onClick={() => setmes(mes + 1)}> {">"} </div>
         </div>
         <Calendario
           dias={criarArrayCalendario(ano, mes)}
@@ -90,4 +90,4 @@ function App() {
     </Container>
   );
 }
-export default App;
+export default EtapaCalendario;

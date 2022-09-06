@@ -8,15 +8,20 @@ export const Container = styled.div`
         text-decoration:none;
         color:black;
     }
-    button{
-        width: 30%;
+    .mudar-mes{
+        width: 10%;
         height: 40px;
-        background-color: red;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center ;
+    }
+    b{
+        font-size: 25px;
     }
     .painel-calendario{
         display: flex;
         justify-content: space-between ;
-        background-color: blue ;
         align-items: center ;
     }
     `;
