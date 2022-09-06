@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Calendario from './components/card/Calendario';
-import './global.ts';
-import { Container } from './styles';
-import { GlobalStyle } from "./global";
-import Horarios from './components/card/Horarios';
+import Calendario from '../../components/Calendario';
+import '../../global';
+import { Container } from '../../styles';
+import { GlobalStyle } from "../../global";
+import Horarios from '../../components/Horarios';
 
 function criarArrayCalendario(ano = 0, mes = 0) {
   let mesAtual = mes + 1;

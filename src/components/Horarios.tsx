@@ -1,6 +1,6 @@
 import { HorariosCard } from "./style";
 import React, { useState, useEffect } from 'react';
-import api from './../../services/api';
+import api from './../services/api';
 
 export default function Horarios(props: any) {
   const [user, setUser] = useState([]);
